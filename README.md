@@ -1,1 +1,2 @@
-This is program music
+Program interpretate long jazz chord notation giving on output the notes that comprise the chord.
+For more information about jazz notation go to <a href = 'http://en.wikipedia.org/wiki/Chord_names_and_symbols_(popular_music)#Rules_to_decode_chord_names_and_symbols'> Wikipedia Chord names and symbols </a>
