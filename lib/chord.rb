@@ -8,7 +8,8 @@ class Chord
 	def chord_interpretator(chord_root, chord_quality, chord_interval, alerted_fifth, added_tone_chords)
 		chromatic_scale_sharp = %w(C C# D D# E F F# G G# A A# B)
 		chromatic_scale_flat = %w(C Db D Eb E F Gb G Ab A Bb B)
-		
+		chromatic_scale = []
+
 		# Third
 		min3 = 3 # Eb
 		maj3 = 4  # E no_symbol, M, maj, or major
@@ -24,47 +25,41 @@ class Chord
 		min7 = 10 # Bb
 		maj7 = 11 # B
 
-		#chord_root = chord_notation[0]
-		interval = chromatic_scale_flat.index(chord_root[0])
-
-		if chord_root[1] == 'b'
-			flat = true
-			interval -= 1
-		elsif chord_root[1] == '#'
-			sharp = true
-			interval +=1
+		if is_flat(chord_root, chord_quality)
+			chromatic_scale = chromatic_scale_flat
+		elsif is_sharp(chord_root, chord_quality)
+			chromatic_scale = chromatic_scale_sharp
 		end
+
+		interval = chromatic_scale.index(chord_root)
+		interval = chromatic_scale.index('F') if chord_root == 'E#'
 			
-		case 
-		when chord_quality == 'maj' 
+		case chord_quality
+		when 'maj'
 			chord_third = maj3
 			chord_fifth = perf5
-		when chord_quality == 'min'
+		when 'min'
 			chord_third = min3
 			chord_fifth = perf5
 		end
 
-
-		if flat
-			chord_third = chromatic_scale_flat[transposition(chord_third, interval)]
-			chord_fifth = chromatic_scale_flat[transposition(chord_fifth, interval)]
-		elsif sharp
-			chord_third = chromatic_scale_sharp[transposition(chord_third, interval)]
-			chord_fifth = chromatic_scale_sharp[transposition(chord_fifth, interval)]
-		else
-			chord_third = chromatic_scale_sharp[transposition(chord_third, interval)]
-			chord_fifth = chromatic_scale_sharp[transposition(chord_fifth, interval)]
-		end
+		chord_third = chromatic_scale[transposition(chord_third, interval)]
+		chord_fifth = chromatic_scale[transposition(chord_fifth, interval)]
 		
 		chord_root + ' '	+  chord_third + ' '	+  chord_fifth
+	end
+
+
+	def is_flat(chord_root, chord_quality)
+		(chord_quality == 'maj' && ( %w(F Bb Eb Ab Db Gb Cb Fb).index(chord_root))) || (chord_quality == 'min' && ( %w(D G C F Bb Eb Ab Db Gb).index(chord_root)))
+	end
+
+	def is_sharp(chord_root, chord_quality)
+		(chord_quality == 'maj' && ( %w(C G D A E B F# C# G# D# A#).index(chord_root))) || (chord_quality == 'min' && ( %w(A E B F# C# G# D# A# E#).index(chord_root)))
 	end
 
 
 	def transposition(note, interval)
 		(note + interval) % 12
 	end
-
-	def fun
-	end
-
 end
