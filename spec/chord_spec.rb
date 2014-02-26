@@ -4,7 +4,7 @@ require_relative 'spec_helper'
 describe Chord do
 	let(:chord){ Chord.new }
 
-	# major
+# major
 	it { chord.chord_interpretator('C','maj',0,0,0).should eq('C E G') }
 	it { chord.chord_interpretator('C#','maj',0,1,1).should eq('C# F G#') }
 	it { chord.chord_interpretator('Db','maj',0,1,1).should eq('Db F Ab') }
@@ -27,7 +27,7 @@ describe Chord do
 	#it { chord.chord_interpretator('Cb','maj',0,1,1).should eq('Cb Eb Gb') }
 	#it { chord.chord_interpretator('Fb','maj',0,1,1).should eq('Fb Ab B') }
 
-	# minor
+# minor
 	it { chord.chord_interpretator('C', 'min',0,1,1).should eq('C Eb G') }
 	it { chord.chord_interpretator('C#','min',0,1,1).should eq('C# E G#') }
 	it { chord.chord_interpretator('Db','min',0,1,1).should eq('Db E Ab') }
@@ -53,7 +53,7 @@ describe Chord do
 	#it { chord.chord_interpretator('Cb','min',0,1,1).should eq('Cb E Gb') }
 	#it { chord.chord_interpretator('Fb','min',0,1,1).should eq('Fb A B') }
 
-	# augumented chord
+# augumented chord
 	it { chord.chord_interpretator('C','aug',0,1,1).should eq('C E G#') }
 	it { chord.chord_interpretator('C#','aug',0,1,1).should eq('C# F A') }
 	it { chord.chord_interpretator('Db','aug',0,1,1).should eq('Db F A') }
@@ -72,7 +72,7 @@ describe Chord do
 	it { chord.chord_interpretator('Bb','aug',0,1,1).should eq('Bb D F#') }
 	it { chord.chord_interpretator('B','aug',0,1,1).should eq('B D# G') }
 
-	# dimished triad
+# dimished triad
 	it { chord.chord_interpretator('C', 'dim',0,1,1).should eq('C Eb Gb') }
 	it { chord.chord_interpretator('C#','dim',0,1,1).should eq('C# E G') }
 	it { chord.chord_interpretator('Db','dim',0,1,1).should eq('Db E G') }
@@ -95,7 +95,7 @@ describe Chord do
 	it { chord.chord_interpretator('Bb','dim',0,1,1).should eq('Bb Db E') }
 	it { chord.chord_interpretator('B','dim',0,1,1).should eq('B D F') }
 
-	# dominant 7
+# dominant 7
 	it { chord.chord_interpretator('C','dom',7,1,1).should eq('C E G Bb') }	
 	it { chord.chord_interpretator('C#','dom',7,1,1).should eq('C# F G# B') }
 	it { chord.chord_interpretator('Db','dom',7,1,1).should eq('Db F Ab B') }
@@ -114,6 +114,44 @@ describe Chord do
 	it { chord.chord_interpretator('Bb','dom',7,1,1).should eq('Bb D F Ab') }
 	it { chord.chord_interpretator('B','dom',7,1,1).should eq('B D# F# A') }
 
+# maj6
+	it { chord.chord_interpretator('C','maj',6,0,0).should eq('C E G A') }
+	it { chord.chord_interpretator('C#','maj',6,1,1).should eq('C# F G# A#') }
+	it { chord.chord_interpretator('Db','maj',6,1,1).should eq('Db F Ab Bb') }
+	it { chord.chord_interpretator('D','maj',6,1,1).should eq('D F# A B') }
+	it { chord.chord_interpretator('D#','maj',6,1,1).should eq('D# G A# C') }
+	it { chord.chord_interpretator('Eb','maj',6,1,1).should eq('Eb G Bb C') }	
+	it { chord.chord_interpretator('E','maj',6,1,1).should eq('E G# B C#') }
+	it { chord.chord_interpretator('F','maj',6,1,1).should eq('F A C D') }
+	it { chord.chord_interpretator('F#','maj',6,1,1).should eq('F# A# C# D#') }
+	it { chord.chord_interpretator('Gb','maj',6,1,1).should eq('Gb Bb Db Eb') }
+	it { chord.chord_interpretator('G','maj',6,1,1).should eq('G B D E') }
+	it { chord.chord_interpretator('G#','maj',6,1,1).should eq('G# C D# F') }
+	it { chord.chord_interpretator('Ab','maj',6,1,1).should eq('Ab C Eb F') }	
+	it { chord.chord_interpretator('A','maj',6,1,1).should eq('A C# E F#') }	
+	it { chord.chord_interpretator('A#','maj',6,1,1).should eq('A# D F G') }
+	it { chord.chord_interpretator('Bb','maj',6,1,1).should eq('Bb D F G') }
+	it { chord.chord_interpretator('B','maj',6,1,1).should eq('B D# F# G#') }
+
+# min6
+	it { chord.chord_interpretator('C', 'min',6,1,1).should eq('C Eb G A') }
+	it { chord.chord_interpretator('C#','min',6,1,1).should eq('C# E G# A#') }
+	it { chord.chord_interpretator('Db','min',6,1,1).should eq('Db E Ab Bb') }
+	it { chord.chord_interpretator('D', 'min',6,1,1).should eq('D F A B') }
+	it { chord.chord_interpretator('D#','min',6,1,1).should eq('D# F# A# C') }
+	it { chord.chord_interpretator('Eb','min',6,1,1).should eq('Eb Gb Bb C') }		
+	it { chord.chord_interpretator('E', 'min',6,1,1).should eq('E G B C#') }
+	it { chord.chord_interpretator('E#', 'min',6,1,1).should eq('E# G# C D') }
+	it { chord.chord_interpretator('F','min',6,1,1).should eq('F Ab C D') }
+	it { chord.chord_interpretator('F#','min',6,1,1).should eq('F# A C# D#') }
+	it { chord.chord_interpretator('Gb','min',6,1,1).should eq('Gb A Db Eb') }
+	it { chord.chord_interpretator('G','min',6,1,1).should eq('G Bb D E') }
+	it { chord.chord_interpretator('G#','min',6,1,1).should eq('G# B D# F') }
+	it { chord.chord_interpretator('Ab','min',6,1,1).should eq('Ab B Eb F') }
+	it { chord.chord_interpretator('A','min',6,1,1).should eq('A C E F#') }	
+	it { chord.chord_interpretator('A#','min',6,1,1).should eq('A# C# F G') }
+	it { chord.chord_interpretator('Bb','min',6,1,1).should eq('Bb Db F G') }
+	it { chord.chord_interpretator('B','min',6,1,1).should eq('B D F# G#') }			
 # maj7
 	it { chord.chord_interpretator('C','maj',7,0,0).should eq('C E G B') }
 	it { chord.chord_interpretator('C#','maj',7,1,1).should eq('C# F G# C') }

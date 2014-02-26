@@ -1,18 +1,18 @@
 class Chord
 		CHROMATIC_SCALE_SHARP = %w(C C# D D# E F F# G G# A A# B)
 		CHROMATIC_SCALE_FLAT = %w(C Db D Eb E F Gb G Ab A Bb B)
-		# Third
-		MIN3 = 3	# Eb
-		MAJ3 = 4 	# E no_symbol, M, maj, or major
+		# Third 
+		MIN3 = 3
+		MAJ3 = 4	#no_symbol, M, maj, or major
 		# Fifth
-		DIM5 = 6	# Gb
-		PERF5 = 7	# G no_symbol, M, maj, or major
-		AUG5 = 8	# G#
-		# # Added
-		# maj6 = 9	# A =min6  to moze zapisac min6 & maj6 & M6 & m6 ma pozycje 9
-		DIM7 = 0	# Bbb
-		MIN7 = 10	# Bb
-		MAJ7 = 11	# B
+		DIM5 = 6
+		PERF5 = 7	# no_symbol, M, maj, or major
+		AUG5 = 8
+		# Added
+		MAJ6 = 9		# min6  to moze zapisac min6 & maj6 & M6 & m6 ma pozycje 9
+		DIM7 = 0	
+		MIN7 = 10	
+		MAJ7 = 11	
 
 
 	def chord_interpretator(chord_root, chord_quality, interval_quality, alerted_fifth, added_tone_chords)
@@ -22,11 +22,13 @@ class Chord
 		chord_third = chromatic_scale[transposition(chord_third(chord_quality), interval)]
 		chord_fifth = chromatic_scale[transposition(chord_fifth(chord_quality), interval)]
 
-		if interval_quality != 0
+		if interval_quality == 0
+			chord_root + ' '	+  chord_third + ' '	+  chord_fifth
+		elsif interval_quality == 6 || interval_quality ==7		
 			interval_added = chromatic_scale[transposition(interval_quality(interval_quality, chord_quality), interval)]
 			chord_root + ' '	+  chord_third + ' '	+  chord_fifth + ' ' + interval_added
 		else
-			chord_root + ' '	+  chord_third + ' '	+  chord_fifth
+			puts 'wrong scanner output'
 		end
  
 	end
@@ -94,12 +96,14 @@ class Chord
 		if interval_quality == 7
 			case chord_quality
 			when 'dim'
-				interval_quality = DIM7	
+				DIM7	
 			when 'dom'#ks add_this?, 'min', 'aug'
-				interval_quality = MIN7
+				MIN7
 			when 'maj'
-				interval_quality = MAJ7
+				MAJ7
 			end	
+		elsif interval_quality == 6
+			MAJ6
 		end
 	end	
 end
