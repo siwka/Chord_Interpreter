@@ -18,19 +18,6 @@ class Chord
 	def chord_interpretator(chord_root, chord_quality, interval_quality, alerted_fifth, added_tone_chords)
 		chromatic_scale = determine_scale(chord_root, chord_quality)
 		interval = determine_interval(chromatic_scale, chord_root, chord_quality)
-
-		# Third
-		# MIN3 = 3	# Eb
-		# MAJ3 = 4 	# E no_symbol, M, maj, or major
-		# Fifth
-		dim5 = 6	# Gb
-		perf5 = 7	# G no_symbol, M, maj, or major
-		aug5 = 8	# G#
-		# Added
-		maj6 = 9	# A =min6  to moze zapisac min6 & maj6 & M6 & m6 ma pozycje 9
-		dim7 = 0	# Bbb
-		min7 = 10	# Bb
-		maj7 = 11	# B
 		
 		chord_third = chromatic_scale[transposition(chord_third(chord_quality), interval)]
 		chord_fifth = chromatic_scale[transposition(chord_fifth(chord_quality), interval)]
