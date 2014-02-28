@@ -19,8 +19,8 @@ class Chord
 		chromatic_scale = determine_scale(chord_root, chord_quality)
 		interval = determine_interval(chromatic_scale, chord_root, chord_quality)
 		
-		chord_third = chromatic_scale[transposition(chord_third(chord_quality), interval)]
-		chord_fifth = chromatic_scale[transposition(chord_fifth(chord_quality), interval)]
+		chord_third = chromatic_scale[transpose(chord_third(chord_quality), interval)]
+		chord_fifth = chromatic_scale[transpose(chord_fifth(chord_quality), interval)]
 
 		if interval_number == 0
 			chord_notes_list1(chord_root, chord_third, chord_fifth)
@@ -33,7 +33,7 @@ class Chord
 				end
 			end	
 			# interval_number == 6, 7, 'maj7' :
-			interval_added = chromatic_scale[transposition(interval_number(interval_number, chord_quality), interval)]
+			interval_added = chromatic_scale[transpose(interval_number(interval_number, chord_quality), interval)]
 			chord_notes_list2(chord_root, chord_third, chord_fifth, interval_added)
 		end
 	end
@@ -55,7 +55,7 @@ class Chord
 	end
 
 
-	def transposition(note, interval)
+	def transpose(note, interval)
 		(note + interval) % 12
 	end
 
@@ -115,10 +115,10 @@ class Chord
 	end
 
 	def chord_notes_list1(chord_root, chord_third, chord_fifth)
-		chord_root + ' '	+  chord_third + ' '	+  chord_fifth
+		"#{chord_root} #{chord_third} #{chord_fifth}"
 	end
 
 	def chord_notes_list2(chord_root, chord_third, chord_fifth, interval_added)
-		chord_root + ' '	+  chord_third + ' '	+  chord_fifth + ' ' + interval_added
+		"#{chord_root} #{chord_third} #{chord_fifth} #{interval_added}"
 	end
 end
