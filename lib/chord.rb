@@ -35,7 +35,6 @@ class Chord
 			# interval_number == 6, 7, 'maj7' :
 			interval_added = chromatic_scale[transposition(interval_number(interval_number, chord_quality), interval)]
 			chord_notes_list2(chord_root, chord_third, chord_fifth, interval_added)
-			#chord_root + ' '	+  chord_third + ' '	+  chord_fifth + ' ' + interval_added
 		end
 	end
 
