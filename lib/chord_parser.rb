@@ -1,10 +1,10 @@
-class ChordScaner
+class ChordParser
 	
   class Chord
     attr_accessor :root, :quality
   end
 
-	def self.scan input
+	def self.parse input
 		chord = Chord.new
 		chord.root = 'C'
 		chord.quality = quality_of input
@@ -21,7 +21,7 @@ class ChordScaner
   		'Cmajor'	=> 'maj',
   		'Cm'			=> 'min',
   		'Cmin'		=> 'min',
-  		'Cminor'	=> 'min'
+  		'C minor'	=> 'min',
     #input == 'Cm' ? 'min' : 'maj'
   	}[input]
   end	
