@@ -1,13 +1,14 @@
 class ChordParser
 	
   class Chord
-    attr_accessor :root, :quality
+    attr_accessor :root, :quality, :added
   end
 
 	def self.parse input
 		chord = Chord.new
 		chord.root = 'C'
 		chord.quality = quality_of input
+    chord.added = added_tone_of input
 		chord
 	end
 
@@ -19,11 +20,43 @@ class ChordParser
   		'CM'			=> 'maj',
   		'Cmaj'		=> 'maj',
   		'Cmajor'	=> 'maj',
-  		'Cm'			=> 'min',
+  		'Cm3'			=> 'min',
+      'Cm'      => 'min',      
+      'C-'      => 'min',      
   		'Cmin'		=> 'min',
-  		'C minor'	=> 'min',
-    #input == 'Cm' ? 'min' : 'maj'
+  		'Cminor'	=> 'min',
+      'Caug'    => 'aug',      
+      'C+'      => 'aug',
+      'C+5'     => 'aug',
+      'CM+5'    => 'aug',      
+      'CM#5'    => 'aug',     
+      'Cdim'    => 'dim',      
+      'Co'      => 'dim',
+      'Cmo5'    => 'dim',
+      'Cmb5'    => 'dim',
+      'C6'      => 'maj',
+      'CM6'     => 'maj',
+      'Cmaj6'     => 'maj',
+      'Cm6'     => 'min',
+      'C7'      => 'dom',
+      'Cdom7'   => 'dom',      
+      'CM7'     => 'maj',
+      'Cm7'     => 'min',                         
+      #'CMa'     => 'maj',                        
   	}[input]
-  end	
+  end
+
+  def self.added_tone_of input
+    {
+      'C6'     => '6',
+      'CM6'    => '6',
+      'Cmaj6'  => '6',
+      'Cm6'    => '6',
+      'C7'     => '7',
+      'Cdom7'  => '7',      
+      'CM7'    => '7',
+      'Cm7'     => '7',      
+    }[input]
+  end
 
 end
