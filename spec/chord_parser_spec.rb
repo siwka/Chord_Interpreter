@@ -156,6 +156,16 @@ describe ChordParser do
     expect(chord.added).to eq('7')
   end
 
+  it 'gets the quality of C major when CMa7' do
+    chord = described_class.parse 'CMa7'
+    expect(chord.quality).to eq('maj')
+  end
+
+  it 'gets the 7th tone added when CMa7 major 7th chord' do
+    chord = described_class.parse 'CMa7'
+    expect(chord.added).to eq('7')
+  end  
+
   it 'gets the quality of C major when Cmaj7 major 7th chord' do
     chord = described_class.parse 'Cmaj7'
     expect(chord.quality).to eq('maj')
@@ -173,6 +183,16 @@ describe ChordParser do
 
   it 'gets the 7th tone added when Cm7 minor 7th chord' do
     chord = described_class.parse 'Cm7'
+    expect(chord.added).to eq('7')
+  end
+
+  it 'gets the quality of C minor when C-7 minor 7th chord' do
+    chord = described_class.parse 'C-7'
+    expect(chord.quality).to eq('min')
+  end  
+
+  it 'gets the 7th tone added when C-7 minor 7th chord' do
+    chord = described_class.parse 'C-7'
     expect(chord.added).to eq('7')
   end  
 
@@ -204,6 +224,37 @@ describe ChordParser do
   it 'gets the 7th tone added when C+7 augumented 7th chord' do
     chord = described_class.parse 'C+7'
     expect(chord.added).to eq('7')
+  end
+
+  it 'gets the quality of C aug when Caug/maj7 augumented-major 7th chord' do
+    chord = described_class.parse 'Caug/maj7'
+    expect(chord.quality).to eq('aug')
+  end  
+
+  it 'gets the 7th tone added when Caug/maj7 augumented-major 7th chord' do
+    chord = described_class.parse 'Caug/maj7'
+    expect(chord.added).to eq('maj7')
+  end
+
+
+  it 'gets the quality of C aug when Caug(maj7) augumented-major 7th chord' do
+    chord = described_class.parse 'Caug(maj7)'
+    expect(chord.quality).to eq('aug')
+  end  
+
+  it 'gets the 7th tone added when Caug(maj7) augumented-major 7th chord' do
+    chord = described_class.parse 'Caug(maj7)'
+    expect(chord.added).to eq('maj7')
+  end  
+
+  it 'gets the quality of C aug when C+M7 augumented-major 7th chord' do
+    chord = described_class.parse 'C+M7'
+    expect(chord.quality).to eq('aug')
+  end  
+
+  it 'gets the 7th tone added when C+M7 augumented-major 7th chord' do
+    chord = described_class.parse 'C+M7'
+    expect(chord.added).to eq('maj7')
   end  
 
   it 'gets the quality of C dim when Cdim7 diminished 7th chord' do
@@ -254,7 +305,28 @@ describe ChordParser do
   it 'gets the 7th tone added when Cm/M7 minor/major seventh chord' do
     chord = described_class.parse 'Cm/M7'
     expect(chord.added).to eq('maj7')
+  end
+
+    #input = input.scan(/\w/)
+  it 'gets the quality of C minor when Cm#7 minor/major seventh chord' do
+    chord = described_class.parse 'Cm#7'
+    expect(chord.quality).to eq('min')
   end  
+
+  it 'gets the 7th tone added when Cm#7 minor/major seventh chord' do
+    chord = described_class.parse 'Cm#7'
+    expect(chord.added).to eq('maj7')
+  end
+
+  it 'gets the quality of C minor when C-M7 minor/major seventh chord' do
+    chord = described_class.parse 'C-M7'
+    expect(chord.quality).to eq('min')
+  end  
+
+  it 'gets the 7th tone added when C-M7 minor/major seventh chord' do
+    chord = described_class.parse 'C-M7'
+    expect(chord.added).to eq('maj7')
+  end   
 
   it 'gets the quality of C minor when Cm(M7) minor/major seventh chord' do
     chord = described_class.parse 'Cm(M7)'
@@ -264,11 +336,25 @@ describe ChordParser do
   it 'gets the 7th tone added when Cm(M7) minor/major seventh chord' do
     chord = described_class.parse 'Cm(M7)'
     expect(chord.added).to eq('maj7')
-  end 
+  end
 
+  it 'gets the quality of C dim when Cdom7dim5 dominant seventh flat five' do
+    chord = described_class.parse 'Cdom7dim5'
+    expect(chord.quality).to eq('dom7')
+  end  
 
-  xit 'gets the quality of C major when CMa7' do
-    chord = described_class.parse 'CMa7'
-    expect(chord.quality).to eq('maj')
-  end   
+  it 'gets the 7th tone added when Cdom7dim5 dominant seventh flat five' do
+    chord = described_class.parse 'Cdom7dim5'
+    expect(chord.added).to eq('dim5')
+  end  
+
+  it 'gets the quality of C dim when C7b5 dominant seventh flat five' do
+    chord = described_class.parse 'C7b5'
+    expect(chord.quality).to eq('dom7')
+  end  
+
+  it 'gets the 7th tone added when C7b5 dominant seventh flat five' do
+    chord = described_class.parse 'C7b5'
+    expect(chord.added).to eq('dim5')
+  end
 end
