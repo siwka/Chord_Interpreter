@@ -6,12 +6,23 @@ class ChordParser
 
 	def self.parse input
     chord = Chord.new
-    chord.root = root_of input
-    @root = chord.root
+    @root = chord.root = root_of input
 		chord.quality = quality_of input
     chord.added = added_tone_of input
 		chord
 	end
+
+  def root
+    @root
+  end
+
+  def quality
+    chord.quality
+  end
+
+  def added
+    chord.added
+  end
 
   private
 

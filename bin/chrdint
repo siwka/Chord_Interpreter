@@ -10,4 +10,8 @@ puts "chord root: #{chord.root}"
 puts "chord quality #{chord.quality}"
 puts "chord add_int #{chord.added}"
 
+interpreter = ChordInterpreter.new chord #(chord.root, chord.quality, chord.added)
+interpreted_chord = interpreter.interpret
+puts interpreted_chord
+
 puts 'hi'
