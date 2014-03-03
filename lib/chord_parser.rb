@@ -7,6 +7,7 @@ class ChordParser
 	def self.parse input
     chord = Chord.new
     chord.root = root_of input
+    @root = chord.root
 		chord.quality = quality_of input
     chord.added = added_tone_of input
 		chord
@@ -27,7 +28,7 @@ class ChordParser
   end
 
   def self.quality_of input
-    input = input.delete(root_of input)
+    input = input.delete(@root)
     input.scan(/(\w+)(\d+)/)
     case input
     when '', 'M', 'maj', 'major', '6', 'M6', 'maj6', 'M7', 'Ma7', 'maj7'
@@ -49,7 +50,7 @@ class ChordParser
   end
 
   def self.added_tone_of input
-    input = input.delete(root_of input)
+    input = input.delete(@root)
     case input
     when '', 'M', 'maj', 'major', 'm', 'm3', 'min', 'minor', '-', 'aug', '+', '+5', 'M+5', 'M#5', 'dim', 'o'
       ''
