@@ -348,6 +348,11 @@ describe ChordParser do
     expect(chord.added).to eq('dim5')
   end  
 
+  it 'parses C7b5 dominant seventh flat five' do
+    chord = described_class.parse 'C7b5'
+    expect(chord.root).to eq('C')
+  end
+
   it 'gets the quality of C dim when C7b5 dominant seventh flat five' do
     chord = described_class.parse 'C7b5'
     expect(chord.quality).to eq('dom7')
@@ -357,4 +362,71 @@ describe ChordParser do
     chord = described_class.parse 'C7b5'
     expect(chord.added).to eq('dim5')
   end
+
+  it 'parses D' do
+    chord = described_class.parse 'D'
+    expect(chord.root).to eq('D')
+  end
+
+  it 'parses Gb' do
+    chord = described_class.parse 'Gb'
+    expect(chord.root).to eq('Gb')
+  end
+
+  it 'parses Bb7' do
+    chord = described_class.parse 'Bb7'
+    expect(chord.root).to eq('Bb')
+  end
+
+  it 'gets the quality of Bb7 dominant when Bb7 dominant 7th chord' do
+    chord = described_class.parse 'Bb7'
+    expect(chord.quality).to eq('dom')
+  end  
+
+  it 'gets the 7th tone added when Bb7 dominant 7th chord' do
+    chord = described_class.parse 'Bb7'
+    expect(chord.added).to eq('7')
+  end  
+
+  it 'parses G#7b5 dominant seventh flat five' do
+    chord = described_class.parse 'G#7b5'
+    expect(chord.root).to eq('G#')
+  end
+
+  it 'gets the quality of dom7 when G#7b5 dominant seventh flat five' do
+    chord = described_class.parse 'G#7b5'
+    expect(chord.quality).to eq('dom7')
+  end 
+
+  it 'gets the 7th tone added when G#7b5 dominant seventh flat five' do
+    chord = described_class.parse 'G#7b5'
+    expect(chord.added).to eq('dim5')
+  end
+
+  it 'parses A#' do
+    chord = described_class.parse 'A#'
+    expect(chord.root).to eq('A#')
+  end
+
+  it 'parses Eb7b5 dominant seventh flat five' do
+    chord = described_class.parse 'Eb7b5'
+    expect(chord.root).to eq('Eb')
+  end
+
+  it 'gets the quality of Eb dom7 when Eb7b5 dominant seventh flat five' do
+    chord = described_class.parse 'Eb7b5'
+    expect(chord.quality).to eq('dom7')
+  end 
+
+  it 'gets the 7th tone added when Eb7b5 dominant seventh flat five' do
+    chord = described_class.parse 'Eb7b5'
+    expect(chord.added).to eq('dim5')
+  end
+
+  it 'parses Ab7b5' do
+    chord = described_class.parse 'Ab7b5'
+    expect(chord.root).to eq('Ab')
+  end
+
 end
+

@@ -5,8 +5,8 @@ class ChordParser
   end
 
 	def self.parse input
-		chord = Chord.new
-		chord.root = 'C'
+    chord = Chord.new
+    chord.root = root_of input
 		chord.quality = quality_of input
     chord.added = added_tone_of input
 		chord
@@ -14,37 +14,55 @@ class ChordParser
 
   private
 
-  def self.quality_of input
-  	case input
-    when 'C', 'CM', 'Cmaj', 'Cmajor', 'C6', 'CM6', 'Cmaj6', 'CM7', 'CMa7', 'Cmaj7'
-      'maj'
-    when 'Cm3', 'Cm', 'C-', 'Cmin', 'Cminor', 'Cm6', 'Cm7', 'C-7', 'Cmin7', 'Cmin/maj7', 'Cmin(maj7)','Cm/M7' ,'Cm(M7)', 'Cm#7', 'C-M7'
-      'min'
-    when 'Caug', 'C+', 'C+5', 'CM+5', 'CM#5', 'Caug7', 'C+7', 'Caug/maj7', 'Caug(maj7)', 'C+M7'
-      'aug'
-    when 'Cdim', 'Co', 'Cmo5', 'Cmb5', 'Cdim7', 'Co7'
-      'dim'
-    when 'C7' ,'Cdom7'
-      'dom'
-    when 'Cdom7dim5', 'C7b5'
-      'dom7'
+  def self.root_of input
+    if %w[A B C D E F G].index(input.chr)
+      len = 0
+      if input.index('b') == 1 || input.index('#') == 1
+        len = 1
+      end  
+      input[0..len]
     else
-      puts "wrong quality of input #{input}"
+      puts "there is no key tone starting with this letter, raise_error(message)"
     end
   end
 
-  def self.added_tone_of input
+  def self.quality_of input
+    input = input.delete(root_of input)
+    input.scan(/(\w+)(\d+)/)
     case input
-    when 'C6', 'CM6', 'Cmaj6', 'Cm6'
+    when '', 'M', 'maj', 'major', '6', 'M6', 'maj6', 'M7', 'Ma7', 'maj7'
+      'maj'
+    when 'm3', 'm', '-', 'min', 'minor', 'm6', 'm7', '-7', 'min7', 'min/maj7', 'min(maj7)','m/M7' ,'m(M7)', 'm#7', '-M7'
+      'min'
+    when 'aug', '+', '+5', 'M+5', 'M#5', 'aug7', '+7', 'aug/maj7', 'aug(maj7)', '+M7'
+      'aug'
+    when 'dim', 'o', 'mo5', 'mb5', 'dim7', 'o7'
+      'dim'
+    when '7' ,'dom7'
+      'dom'
+    when 'dom7dim5', '7b5', '75'
+      'dom7'
+    else
+      puts "wrong quality of input #{input}, raise_error(message)"
+    end
+
+  end
+
+  def self.added_tone_of input
+    input = input.delete(root_of input)
+    case input
+    when '', 'M', 'maj', 'major', 'm', 'm3', 'min', 'minor', '-', 'aug', '+', '+5', 'M+5', 'M#5', 'dim', 'o'
+      ''
+    when '6', 'M6', 'maj6', 'm6'
       '6'
-    when 'C7', 'Cdom7', 'CM7', 'CMa7', 'Cmaj7', 'Cm7', 'C-7', 'Cmin7', 'Caug7', 'Cdim7', 'Co7', 'C+7'
+    when '7', 'dom7', 'M7', 'Ma7', 'maj7', 'm7', '-7', 'min7', 'aug7', 'dim7', 'o7', '+7'
       '7'
-    when 'Cmin/maj7', 'Cmin(maj7)', 'Cm/M7' ,'Cm(M7)', 'Cm#7', 'C-M7', 'Caug/maj7', 'Caug(maj7)', 'C+M7'
+    when 'min/maj7', 'min(maj7)', 'm/M7' ,'m(M7)', 'm#7', '-M7', 'aug/maj7', 'aug(maj7)', '+M7'
       'maj7'
-    when 'Cdom7dim5', 'C7b5'
+    when 'dom7dim5', '7b5', '75'
       'dim5'
     else
-      puts "wrong added tone of input #{input}"
+      puts "wrong added tone of input #{input}, raise_error(message)"
     end
   end
 
