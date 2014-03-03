@@ -3,5 +3,11 @@ $LOAD_PATH.push File.join(File.dirname(__FILE__), "/../lib")
 
 require 'chord_parser'
 
+chord = ChordParser.parse 'AbmM7'
+
+puts chord
+puts "chord root: #{chord.root}"
+puts "chord quality #{chord.quality}"
+puts "chord add_int #{chord.added}"
 
 puts 'hi'

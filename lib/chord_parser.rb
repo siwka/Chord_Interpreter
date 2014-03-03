@@ -33,7 +33,7 @@ class ChordParser
     case input
     when '', 'M', 'maj', 'major', '6', 'M6', 'maj6', 'M7', 'Ma7', 'maj7'
       'maj'
-    when 'm3', 'm', '-', 'min', 'minor', 'm6', 'm7', '-7', 'min7', 'min/maj7', 'min(maj7)','m/M7' ,'m(M7)', 'm#7', '-M7'
+    when 'm3', 'm', '-', 'min', 'minor', 'm6', 'm7', '-7', 'min7', 'min/maj7', 'min(maj7)', 'mM7', 'm/M7' ,'m(M7)', 'm#7', '-M7'
       'min'
     when 'aug', '+', '+5', 'M+5', 'M#5', 'aug7', '+7', 'aug/maj7', 'aug(maj7)', '+M7'
       'aug'
@@ -58,7 +58,7 @@ class ChordParser
       '6'
     when '7', 'dom7', 'M7', 'Ma7', 'maj7', 'm7', '-7', 'min7', 'aug7', 'dim7', 'o7', '+7'
       '7'
-    when 'min/maj7', 'min(maj7)', 'm/M7' ,'m(M7)', 'm#7', '-M7', 'aug/maj7', 'aug(maj7)', '+M7'
+    when 'min/maj7', 'min(maj7)', 'mM7', 'm/M7' ,'m(M7)', 'm#7', '-M7', 'aug/maj7', 'aug(maj7)', '+M7'
       'maj7'
     when 'dom7dim5', '7b5', '75'
       'dim5'

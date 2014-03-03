@@ -295,7 +295,24 @@ describe ChordParser do
   it 'gets the 7th tone added when Cmin(maj7) minor/major seventh chord' do
     chord = described_class.parse 'Cmin(maj7)'
     expect(chord.added).to eq('maj7')
-  end 
+  end
+
+  #--------
+
+  it 'parses CmM7' do
+    chord = described_class.parse 'C'
+    expect(chord.root).to eq('C')
+  end
+
+  it 'gets the quality of C minor when CmM7 minor/major seventh chord' do
+    chord = described_class.parse 'CmM7'
+    expect(chord.quality).to eq('min')
+  end  
+
+  it 'gets the 7th tone added when CmM7 minor/major seventh chord' do
+    chord = described_class.parse 'CmM7'
+    expect(chord.added).to eq('maj7')
+  end  
 
   it 'gets the quality of C minor when Cm/M7 minor/major seventh chord' do
     chord = described_class.parse 'Cm/M7'
