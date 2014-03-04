@@ -54,7 +54,7 @@ class ChordParser
       'dom'
     when 'dom7dim5', '7b5', '75'
       'dom7'
-    when 'min7dim5', 'm7b5', 'm75'#ks
+    when 'min7dim5', '−7b5', 'm7(5)', 'm75'# ks 2 last instead of 'm7(b5)', 'm7b5'
       'min7'
     else
       puts "wrong quality of input #{input}, raise_error(message)"
@@ -73,7 +73,7 @@ class ChordParser
       '7'
     when 'min/maj7', 'min(maj7)', 'mM7', 'm/M7' ,'m(M7)', 'm#7', '-M7', 'aug/maj7', 'aug(maj7)', '+M7'
       'maj7'
-    when 'dom7dim5', '7b5', 'min7dim5', 'm7b5', 'm75', '75'#ks both last
+    when 'dom7dim5', '7b5', 'min7dim5', '−7b5', 'm7(5)', 'm75', '75' #ks three last   instead of  'm7b5', 'm7(b5)'
       'dim5'
     else
       puts "wrong added tone of input #{input}, raise_error(message)"

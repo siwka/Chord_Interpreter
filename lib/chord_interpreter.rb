@@ -21,20 +21,20 @@ class ChordInterpreter
 		chromatic_scale = determine_scale(chord.root, chord.quality)
 		interval = determine_interval(chromatic_scale, chord.root, chord.quality)
 		
-		chord_third = chromatic_scale[transpose(chord_third(chord.quality), interval)]
-		chord_fifth = chromatic_scale[transpose(chord_fifth(chord.quality), interval)]
+		chord_third = chromatic_scale[transpose(chord_three(chord.quality), interval)]
+		chord_fifth = chromatic_scale[transpose(chord_five(chord.quality), interval)]
 
 		notes_list = "#{chord.root} #{chord_third} #{chord_fifth}"
 
 		if chord.added != ''
-			if chord.added == '7' || chord.added == 'maj7'
+			if chord.added == '7' || chord.added == 'maj7' || chord.added == 'dim7'
 				if chord.quality == 'aug' || chord.quality == 'min'
 					chromatic_scale = determine_scale(chord.root, 'dom')
 				elsif chord.quality == 'dim'
 					chromatic_scale = CHROMATIC_SCALE_FLAT
 				end
 			end	
-			# so far works for: chord.added == 6, 7, 'maj7' 
+			# so far works for: chord.added == 6 too even though it is not mentioned
 			interval_added = chromatic_scale[transpose(interval_number(chord.added, chord.quality), interval)]
 			notes_list << " #{interval_added}"
 		end
@@ -50,8 +50,8 @@ class ChordInterpreter
 	def self.flat?(chord_root, chord_quality)
 		%w(maj aug dom).index(chord_quality) && %w(Eb Ab Db Gb Cb Fb).index(chord_root) \
 				|| %w(maj dom).index(chord_quality)  && %w(F Bb).index(chord_root) \
-				|| %w(min dim).index(chord_quality) && %w(D G C F Bb Eb Ab Db Gb).index(chord_root) \
-				|| chord_quality == 'dim' && %w(A E).index(chord_root) \
+				|| %w(min min7 dim).index(chord_quality) && %w(D G C F Bb Eb Ab Db Gb).index(chord_root) \
+				|| %w(min7 dim).index(chord_quality) && %w(A E).index(chord_root) \
 				|| chord_quality == 'dom' && chord_root == 'C'
  	end
 
@@ -59,6 +59,7 @@ class ChordInterpreter
 		%w(maj aug dom).index(chord_quality) &&  %w(C G D A E B F# C# G# D# A#).index(chord_root) \
 				|| chord_quality == 'aug' && %w(F Bb).index(chord_root) \
 				|| %w(min dim).index(chord_quality) &&  %w(A B F# C# G# D# A# E#).index(chord_root) \
+				|| chord_quality == 'min7' &&  %w(B F# C# G# D# A# E#).index(chord_root) \
 				|| chord_quality == 'min' && %w(A E).index(chord_root)
 	end
 	
@@ -80,37 +81,41 @@ class ChordInterpreter
 		end			
 	end
 
-	def self.chord_third(chord_quality)
+	def self.chord_three(chord_quality)
 		{
-			'maj'=> MAJ3,
-			'dom'=> MAJ3,
-			'aug'=> MAJ3,
-			'min'=> MIN3,
-			'dim'=> MIN3
+			'maj' => MAJ3,
+			'dom' => MAJ3,
+			'aug' => MAJ3,
+			'min' => MIN3,
+			'dim' => MIN3,
+			'min7'=> MIN3
 		}[chord_quality]
 	end
 
-	def self.chord_fifth(chord_quality)
+	def self.chord_five(chord_quality)
 		{
-			'maj'=> PERF5,
-			'dom'=> PERF5,
-			'min'=> PERF5,
-			'aug'=> AUG5,
-			'dim'=> DIM5
+			'maj' => PERF5,
+			'dom' => PERF5,
+			'min' => PERF5,
+			'aug' => AUG5,
+			'dim' => DIM5,
+			'min7'=> DIM5
 		}[chord_quality]
 	end
 
 	def self.interval_number(chord_added, chord_quality)
 		{
 			'maj7' => MAJ7,
+			'dim7' => MIN7,
 			'6' => MAJ6,
 			'7' => 
 			{
-				'maj'=> MAJ7,
-				'dom'=> MIN7,
-				'min'=> MIN7,
-				'aug'=> MIN7,
-				'dim'=> DIM7
+				'maj' => MAJ7,
+				'dom' => MIN7,
+				'min' => MIN7,
+				'aug' => MIN7,
+				'dim' => DIM7,
+				#'min7'=> MIN7
 			}[chord_quality]
 		}[chord_added]
 	end	

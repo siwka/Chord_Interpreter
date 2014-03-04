@@ -441,7 +441,7 @@ describe ChordParser do
     chord = described_class.parse 'Ab7b5'
     expect(chord.root).to eq('Ab')
   end
-# Cmin7dim5 C-E♭-G♭-B♭
+
   it 'parses Cmin7dim5' do
     chord = described_class.parse 'Cmin7dim5'
     expect(chord.root).to eq('C')
@@ -471,7 +471,36 @@ describe ChordParser do
     chord = described_class.parse 'Abm7b5'
     expect(chord.added).to eq('dim5')
   end
-  # C−7♭5   add!
+
+  it 'parses G#−7♭5' do
+    chord = described_class.parse 'G#−7b5'
+    expect(chord.root).to eq('G#')
+  end
+
+  it 'gets the quality of min7 when G#−7♭5 half-diminished seventh' do
+    chord = described_class.parse 'G#−7b5'
+    expect(chord.quality).to eq('min7')
+  end 
+
+  it 'gets the 7th tone dim5 added when G#−7♭5 half-diminished seventh' do
+    chord = described_class.parse 'G#−7b5'
+    expect(chord.added).to eq('dim5')
+  end
+
+  it 'parses D♭m7(♭5)' do
+    chord = described_class.parse 'Dbm7(b5)'
+    expect(chord.root).to eq('Db')
+  end  
+
+  it 'gets the quality of min7 when D♭m7(♭5) half-diminished seventh' do
+    chord = described_class.parse 'Dbm7(b5)'
+    expect(chord.quality).to eq('min7')
+  end 
+
+  it 'gets the 7th tone dim5 added when Dbm7(b5) half-diminished seventh' do
+    chord = described_class.parse 'Dbm7(b5)'
+    expect(chord.added).to eq('dim5')
+  end   
 
 end
 

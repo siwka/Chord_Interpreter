@@ -326,10 +326,42 @@ describe ChordInterpreter do
     chord.quality = 'aug'
     chord.added = 'maj7'  
     described_class.interpret(chord).should eq('Bb D F# A')
-  }         
+  }
 
-# 	
+# half-diminished seventh (minor seventh flat five)
+it {
+    chord = ChordParser::Chord.new
+    chord.root = 'C#'
+    chord.quality = 'min7'
+    chord.added = 'dim7'  
+    described_class.interpret(chord).should eq('C# E G B')
+  }
 
+it {
+    chord = ChordParser::Chord.new
+    chord.root = 'E'
+    chord.quality = 'min7'
+    chord.added = 'dim7'  
+    described_class.interpret(chord).should eq('E G Bb D')
+  }
+
+it {
+    chord = ChordParser::Chord.new
+    chord.root = 'Gb'
+    chord.quality = 'min7'
+    chord.added = 'dim7'  
+    described_class.interpret(chord).should eq('Gb A C E')
+  }
+
+it {
+    chord = ChordParser::Chord.new
+    chord.root = 'A'
+    chord.quality = 'min7'
+    chord.added = 'dim7'  
+    described_class.interpret(chord).should eq('A C Eb G')
+  }
+
+  
 #________________________________________________________________________
 # # major
 # 	it { described_class.interpret('C','maj','').should eq('C E G') }
@@ -585,6 +617,144 @@ describe ChordInterpreter do
 # 	it { described_class.interpret('A','aug','maj7').should eq('A C# F G#') }	
 # 	it { described_class.interpret('A#','aug','maj7').should eq('A# D F# A') }
 # 	it { described_class.interpret('Bb','aug','maj7').should eq('Bb D F# A') }
-# 	it { described_class.interpret('B','aug','maj7').should eq('B D# G A#') }	
+# 	it { described_class.interpret('B','aug','maj7').should eq('B D# G A#') }
+
+# # half-diminished seventh (minor seventh flat five)
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'C'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('C Eb Gb Bb')
+#   }    
+
+#   it {
+#     chord = ChordParser::Chord.new 
+#     chord.root = 'Db'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('Db E G B')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'C#'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('C# E G B')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'D'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('D F Ab C')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'D#'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('D# F# A C#')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'Eb'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('Eb Gb A Db')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'E'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('E G Bb D')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'F'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('F Ab B Eb')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'F#'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('F# A C E')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'Gb'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('Gb A C E')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'G'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('G Bb Db F')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'G#'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('G# B D F#')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'Ab'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('Ab B D Gb')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'A'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('A C Eb G')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'A#'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('A# C# E G#')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'Bb'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('Bb Db E Ab')
+#   }
+
+#   it {
+#     chord = ChordParser::Chord.new
+#     chord.root = 'B'
+#     chord.quality = 'min7'
+#     chord.added = 'dim7'  
+#     described_class.interpret(chord).should eq('B D F A')
+#   }  
+
 
 end	
