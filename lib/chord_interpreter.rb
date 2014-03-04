@@ -16,26 +16,26 @@ class ChordInterpreter
 	MIN7 = 10
 	MAJ7 = 11
 
-	def self.interpret(root, quality, interval_number)
+	def self.interpret(chord)
 
-		chromatic_scale = determine_scale(root, quality)
-		interval = determine_interval(chromatic_scale, root, quality)
+		chromatic_scale = determine_scale(chord.root, chord.quality)
+		interval = determine_interval(chromatic_scale, chord.root, chord.quality)
 		
-		chord_third = chromatic_scale[transpose(chord_third(quality), interval)]
-		chord_fifth = chromatic_scale[transpose(chord_fifth(quality), interval)]
+		chord_third = chromatic_scale[transpose(chord_third(chord.quality), interval)]
+		chord_fifth = chromatic_scale[transpose(chord_fifth(chord.quality), interval)]
 
-		notes_list = "#{root} #{chord_third} #{chord_fifth}"
+		notes_list = "#{chord.root} #{chord_third} #{chord_fifth}"
 
-		if interval_number != ''
-			if interval_number == '7' || interval_number == 'maj7'
-				if quality == 'aug' || quality == 'min'
-					chromatic_scale = determine_scale(root, 'dom')
-				elsif quality == 'dim'
+		if chord.added != ''
+			if chord.added == '7' || chord.added == 'maj7'
+				if chord.quality == 'aug' || chord.quality == 'min'
+					chromatic_scale = determine_scale(chord.root, 'dom')
+				elsif chord.quality == 'dim'
 					chromatic_scale = CHROMATIC_SCALE_FLAT
 				end
 			end	
-			# so far works for: interval_number == 6, 7, 'maj7' 
-			interval_added = chromatic_scale[transpose(interval_number(interval_number, quality), interval)]
+			# so far works for: chord.added == 6, 7, 'maj7' 
+			interval_added = chromatic_scale[transpose(interval_number(chord.added, chord.quality), interval)]
 			notes_list << " #{interval_added}"
 		end
 
@@ -100,7 +100,7 @@ class ChordInterpreter
 		}[chord_quality]
 	end
 
-	def self.interval_number(interval_number, chord_quality)
+	def self.interval_number(chord_added, chord_quality)
 		{
 			'maj7' => MAJ7,
 			'6' => MAJ6,
@@ -112,6 +112,6 @@ class ChordInterpreter
 				'aug'=> MIN7,
 				'dim'=> DIM7
 			}[chord_quality]
-		}[interval_number]
+		}[chord_added]
 	end	
 end
