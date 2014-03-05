@@ -7,10 +7,10 @@ require 'chord_interpreter'
 #next_string = read_input
 chord = ChordParser.parse 'AbmM7'
 
-puts chord
-puts "chord root: #{chord.root}"
-puts "chord quality #{chord.quality}"
-puts "chord add_int #{chord.added}"
+			puts chord
+			puts "chord root: #{chord.root}"
+			puts "chord quality #{chord.quality}"
+			puts "chord add_int #{chord.added}"
 
 interpreter = ChordInterpreter.new #chord 
 interpreted_chord = interpreter.interpret(chord)
