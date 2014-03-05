@@ -320,6 +320,8 @@ it {
   }
 
   
+# Reason to keep expecting results is that in music notation the same note can have 
+# few different names. Name depends of combination in scale or how chord is built.
 #________________________________________________________________________
 # # major
 # 	it { described_class.interpret('C','maj','').should eq('C E G') }
