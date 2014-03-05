@@ -3,9 +3,10 @@ $LOAD_PATH.push File.join(File.dirname(__FILE__), "/../lib")
 
 require 'chord_parser'
 require 'chord_interpreter'
+require 'scanner'
 
 #next_string = read_input
-scanner = Scan.new(STDOUT)
+scanner = Scanner.new(STDOUT)
 scanner.start
 
 chord = ChordParser.parse 'AbmM7'
