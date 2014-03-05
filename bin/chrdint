@@ -5,6 +5,9 @@ require 'chord_parser'
 require 'chord_interpreter'
 
 #next_string = read_input
+scanner = Scan.new(STDOUT)
+scanner.start
+
 chord = ChordParser.parse 'AbmM7'
 
 			puts chord

@@ -2,10 +2,10 @@ require 'chord_parser'
 require 'chord_interpreter'
 
 describe ChordInterpreter do
+	let(:chord) { chord = ChordParser::Chord.new }
 
 # major	triad
 	it {
-    chord = ChordParser::Chord.new
     chord.root = 'C'
     chord.quality = 'maj'
     chord.added = ''
@@ -13,7 +13,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'D#'
     chord.quality = 'maj'
     chord.added = ''  
@@ -21,7 +20,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Ab'
     chord.quality = 'maj'
     chord.added = ''  
@@ -30,7 +28,6 @@ describe ChordInterpreter do
 
 # minor triad
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Db'
     chord.quality = 'min'
     chord.added = ''  
@@ -38,7 +35,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F#'
     chord.quality = 'min'
     chord.added = ''  
@@ -46,7 +42,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Bb'
     chord.quality = 'min'
     chord.added = ''  
@@ -55,7 +50,6 @@ describe ChordInterpreter do
 
 # augmented triad
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F'
     chord.quality = 'aug'
     chord.added = ''  
@@ -63,7 +57,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'G'
     chord.quality = 'aug'
     chord.added = ''  
@@ -71,7 +64,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Ab'
     chord.quality = 'aug'
     chord.added = ''  
@@ -80,7 +72,6 @@ describe ChordInterpreter do
 
 # diminished triad
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'E'
     chord.quality = 'dim'
     chord.added = ''  
@@ -88,7 +79,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Gb'
     chord.quality = 'dim'
     chord.added = ''  
@@ -96,7 +86,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'B'
     chord.quality = 'dim'
     chord.added = ''  
@@ -105,7 +94,6 @@ describe ChordInterpreter do
 
 # dominant seventh chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'C'
     chord.quality = 'dom'
     chord.added = '7'  
@@ -113,7 +101,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Eb'
     chord.quality = 'dom'
     chord.added = '7'  
@@ -121,7 +108,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'G'
     chord.quality = 'dom'
     chord.added = '7'  
@@ -130,7 +116,6 @@ describe ChordInterpreter do
   
 # major sixth chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F#'
     chord.quality = 'maj'
     chord.added = '6'  
@@ -138,7 +123,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Gb'
     chord.quality = 'maj'
     chord.added = '6'  
@@ -146,7 +130,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'A#'
     chord.quality = 'maj'
     chord.added = '6'  
@@ -155,7 +138,6 @@ describe ChordInterpreter do
 
 # minor sixth chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'E#'
     chord.quality = 'min'
     chord.added = '6'  
@@ -163,7 +145,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F'
     chord.quality = 'min'
     chord.added = '6'  
@@ -171,7 +152,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Gb'
     chord.quality = 'min'
     chord.added = '6'  
@@ -180,7 +160,6 @@ describe ChordInterpreter do
 
 # major seventh chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'C#'
     chord.quality = 'maj'
     chord.added = '7'  
@@ -188,7 +167,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F#'
     chord.quality = 'maj'
     chord.added = '7'  
@@ -196,7 +174,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'B'
     chord.quality = 'maj'
     chord.added = '7'  
@@ -205,7 +182,6 @@ describe ChordInterpreter do
 
 # minor seventh chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Db'
     chord.quality = 'min'
     chord.added = '7'  
@@ -213,7 +189,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F'
     chord.quality = 'min'
     chord.added = '7'  
@@ -221,7 +196,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'G#'
     chord.quality = 'min'
     chord.added = '7'  
@@ -230,7 +204,6 @@ describe ChordInterpreter do
 
 # augmented seventh chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F#'
     chord.quality = 'aug'
     chord.added = '7'  
@@ -238,7 +211,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'G'
     chord.quality = 'aug'
     chord.added = '7'  
@@ -246,7 +218,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Bb'
     chord.quality = 'aug'
     chord.added = '7'  
@@ -255,7 +226,6 @@ describe ChordInterpreter do
 
 # diminished seventh chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Db'
     chord.quality = 'dim'
     chord.added = '7'  
@@ -263,7 +233,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'F'
     chord.quality = 'dim'
     chord.added = '7'  
@@ -271,7 +240,6 @@ describe ChordInterpreter do
   }
 
     it {
-    chord = ChordParser::Chord.new
     chord.root = 'A#'
     chord.quality = 'dim'
     chord.added = '7'  
@@ -280,7 +248,6 @@ describe ChordInterpreter do
 
 # minor-major seventh chord
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'C#'
     chord.quality = 'min'
     chord.added = 'maj7'  
@@ -288,7 +255,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Db'
     chord.quality = 'min'
     chord.added = 'maj7'  
@@ -296,7 +262,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'G'
     chord.quality = 'min'
     chord.added = 'maj7'  
@@ -305,7 +270,6 @@ describe ChordInterpreter do
 
 # augmented-major seventh (major seventh sharp five)
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'E'
     chord.quality = 'aug'
     chord.added = 'maj7'  
@@ -313,7 +277,6 @@ describe ChordInterpreter do
   }
 
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'G#'
     chord.quality = 'aug'
     chord.added = 'maj7'  
@@ -321,7 +284,6 @@ describe ChordInterpreter do
   }
  
   it {
-    chord = ChordParser::Chord.new
     chord.root = 'Bb'
     chord.quality = 'aug'
     chord.added = 'maj7'  
@@ -330,7 +292,6 @@ describe ChordInterpreter do
 
 # half-diminished seventh (minor seventh flat five)
 it {
-    chord = ChordParser::Chord.new
     chord.root = 'C#'
     chord.quality = 'min7'
     chord.added = 'dim7'  
@@ -338,7 +299,6 @@ it {
   }
 
 it {
-    chord = ChordParser::Chord.new
     chord.root = 'E'
     chord.quality = 'min7'
     chord.added = 'dim7'  
@@ -346,7 +306,6 @@ it {
   }
 
 it {
-    chord = ChordParser::Chord.new
     chord.root = 'Gb'
     chord.quality = 'min7'
     chord.added = 'dim7'  
@@ -354,7 +313,6 @@ it {
   }
 
 it {
-    chord = ChordParser::Chord.new
     chord.root = 'A'
     chord.quality = 'min7'
     chord.added = 'dim7'  
@@ -621,8 +579,7 @@ it {
 
 # # half-diminished seventh (minor seventh flat five)
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'C'
+# #     chord.root = 'C'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('C Eb Gb Bb')
@@ -637,112 +594,98 @@ it {
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'C#'
+# #     chord.root = 'C#'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('C# E G B')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'D'
+# #     chord.root = 'D'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('D F Ab C')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'D#'
+# #     chord.root = 'D#'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('D# F# A C#')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'Eb'
+# #     chord.root = 'Eb'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('Eb Gb A Db')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'E'
+# #     chord.root = 'E'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('E G Bb D')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'F'
+# #     chord.root = 'F'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('F Ab B Eb')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'F#'
+# #     chord.root = 'F#'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('F# A C E')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'Gb'
+# #     chord.root = 'Gb'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('Gb A C E')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'G'
+# #     chord.root = 'G'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('G Bb Db F')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'G#'
+# #     chord.root = 'G#'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('G# B D F#')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'Ab'
+# #     chord.root = 'Ab'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('Ab B D Gb')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'A'
+# #     chord.root = 'A'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('A C Eb G')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'A#'
+# #     chord.root = 'A#'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('A# C# E G#')
 #   }
 
 #   it {
-#     chord = ChordParser::Chord.new
-#     chord.root = 'Bb'
+# #     chord.root = 'Bb'
 #     chord.quality = 'min7'
 #     chord.added = 'dim7'  
 #     described_class.interpret(chord).should eq('Bb Db E Ab')

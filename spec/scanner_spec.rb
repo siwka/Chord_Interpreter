@@ -1,0 +1,3 @@
+describe Scan do
+
+end
