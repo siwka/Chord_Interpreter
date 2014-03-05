@@ -23,23 +23,11 @@ class ChordInterpreter
 		
 		chord_third = chromatic_scale[transpose(chord_three(chord.quality), interval)]
 		chord_fifth = chromatic_scale[transpose(chord_five(chord.quality), interval)]
+		chord_seventh = chord_seven(chord.root, chord.quality, chord.added, interval, chromatic_scale) if chord.added != ''
 
 		notes_list = "#{chord.root} #{chord_third} #{chord_fifth}"
-
-		if chord.added != ''
-			if chord.added == '7' || chord.added == 'maj7' || chord.added == 'dim7'
-				if chord.quality == 'aug' || chord.quality == 'min'
-					chromatic_scale = determine_scale(chord.root, 'dom')
-				elsif chord.quality == 'dim'
-					chromatic_scale = CHROMATIC_SCALE_FLAT
-				end
-			end	
-			# so far works for: chord.added == 6 too even though it is not mentioned
-			interval_added = chromatic_scale[transpose(interval_number(chord.added, chord.quality), interval)]
-			notes_list << " #{interval_added}"
-		end
-
-  	notes_list
+	 	notes_list << " #{chord_seventh}" unless chord_seventh.nil?
+   	notes_list
 	end
 
 
@@ -103,6 +91,18 @@ class ChordInterpreter
 		}[chord_quality]
 	end
 
+	def self.chord_seven(root, quality, added, interval, chromatic_scale)
+		# so far works for: chord.added == 6 too even though it is not mentioned
+		if added == '7' || added == 'maj7' || added == 'dim7'
+			if quality == 'aug' || quality == 'min'
+				chromatic_scale = determine_scale(root, 'dom')
+			elsif quality == 'dim'
+				chromatic_scale = CHROMATIC_SCALE_FLAT
+			end
+		end	
+		chromatic_scale[transpose(interval_number(added, quality), interval)]
+	end
+
 	def self.interval_number(chord_added, chord_quality)
 		{
 			'maj7' => MAJ7,
@@ -115,7 +115,6 @@ class ChordInterpreter
 				'min' => MIN7,
 				'aug' => MIN7,
 				'dim' => DIM7,
-				#'min7'=> MIN7
 			}[chord_quality]
 		}[chord_added]
 	end	

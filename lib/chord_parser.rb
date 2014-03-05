@@ -12,18 +12,6 @@ class ChordParser
 		chord
 	end
 
-  def root
-    @root
-  end
-
-  def quality
-    chord.quality
-  end
-
-  def added
-    chord.added
-  end
-
   private
 
   def self.root_of input

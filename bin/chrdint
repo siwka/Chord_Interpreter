@@ -2,7 +2,9 @@
 $LOAD_PATH.push File.join(File.dirname(__FILE__), "/../lib")
 
 require 'chord_parser'
+require 'chord_interpreter'
 
+#next_string = read_input
 chord = ChordParser.parse 'AbmM7'
 
 puts chord
@@ -10,8 +12,8 @@ puts "chord root: #{chord.root}"
 puts "chord quality #{chord.quality}"
 puts "chord add_int #{chord.added}"
 
-interpreter = ChordInterpreter.new chord 
-interpreted_chord = interpreter.interpret
-puts interpreted_chord
+interpreter = ChordInterpreter.new #chord 
+interpreted_chord = interpreter.interpret(chord)
 
-puts 'hi'
+puts interpreted_chord
+#ChordPrinter.print( interpreted_chord )
