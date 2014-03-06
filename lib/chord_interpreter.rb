@@ -37,18 +37,18 @@ class ChordInterpreter
 
 	def self.flat?(chord_root, chord_quality)
 		%w(maj aug dom).index(chord_quality) && %w(Eb Ab Db Gb Cb Fb).index(chord_root) \
-				|| %w(maj dom).index(chord_quality)  && %w(F Bb).index(chord_root) \
-				|| %w(min min7 dim).index(chord_quality) && %w(D G C F Bb Eb Ab Db Gb).index(chord_root) \
-				|| %w(min7 dim).index(chord_quality) && %w(A E).index(chord_root) \
-				|| chord_quality == 'dom' && chord_root == 'C'
+			|| %w(maj dom).index(chord_quality)  && %w(F Bb).index(chord_root) \
+			|| %w(min min7 dim).index(chord_quality) && %w(D G C F Bb Eb Ab Db Gb).index(chord_root) \
+			|| %w(min7 dim).index(chord_quality) && %w(A E).index(chord_root) \
+			|| chord_quality == 'dom' && chord_root == 'C'
  	end
 
 	def self.sharp?(chord_root, chord_quality)
 		%w(maj aug dom).index(chord_quality) &&  %w(C G D A E B F# C# G# D# A#).index(chord_root) \
-				|| chord_quality == 'aug' && %w(F Bb).index(chord_root) \
-				|| %w(min dim).index(chord_quality) &&  %w(A B F# C# G# D# A# E#).index(chord_root) \
-				|| chord_quality == 'min7' &&  %w(B F# C# G# D# A# E#).index(chord_root) \
-				|| chord_quality == 'min' && %w(A E).index(chord_root)
+			|| chord_quality == 'aug' && %w(F Bb).index(chord_root) \
+			|| %w(min dim).index(chord_quality) &&  %w(A B F# C# G# D# A# E#).index(chord_root) \
+			|| chord_quality == 'min7' &&  %w(B F# C# G# D# A# E#).index(chord_root) \
+			|| chord_quality == 'min' && %w(A E).index(chord_root)
 	end
 	
 	def self.determine_scale(chord_root, chord_quality)
@@ -93,8 +93,8 @@ class ChordInterpreter
 
 	def self.chord_seven(root, quality, added, interval, chromatic_scale)
 		# so far works for: chord.added == 6 too even though it is not mentioned
-		if added == '7' || added == 'maj7' || added == 'dim7'
-			if quality == 'aug' || quality == 'min'
+		if %w(7 maj7 dim7).index(added)
+			if %w(aug min).index(quality)
 				chromatic_scale = determine_scale(root, 'dom')
 			elsif quality == 'dim'
 				chromatic_scale = CHROMATIC_SCALE_FLAT

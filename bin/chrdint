@@ -7,17 +7,21 @@ require 'scanner'
 
 #next_string = read_input
 scanner = Scanner.new(STDOUT)
-scanner.start
+scanner.start("")
 
-chord = ChordParser.parse 'AbmM7'
+$stdout.flush
+while notation = gets.chomp 
+	notation = scanner.take(notation)
+	chord = ChordParser.parse(notation)
+	#scanner.long_notation(chord):
+				puts chord
+				puts "chord root: #{chord.root}"
+				puts "chord quality #{chord.quality}"
+				puts "chord add_int #{chord.added}"
 
-			puts chord
-			puts "chord root: #{chord.root}"
-			puts "chord quality #{chord.quality}"
-			puts "chord add_int #{chord.added}"
+	interpreter = ChordInterpreter.new
+	interpreted_chord = interpreter.interpret(chord)
 
-interpreter = ChordInterpreter.new #chord 
-interpreted_chord = interpreter.interpret(chord)
-
-puts interpreted_chord
-#ChordPrinter.print( interpreted_chord )
+	#ChordPrinter.print( interpreted_chord )
+	puts "notes of the chord are: " + interpreted_chord
+end
