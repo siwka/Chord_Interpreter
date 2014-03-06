@@ -30,7 +30,7 @@ class ChordParser
     input = input.delete(@root)
     input.scan(/(\w+)(\d+)/)
     case input
-    when '', 'M', 'maj', 'major', '6', 'M6', 'maj6', 'M7', 'Ma7', 'maj7'
+    when '', 'M', 'maj', 'major', 'major7', '6', 'M6', 'maj6', 'M7', 'Ma7', 'maj7'
       'maj'
     when 'm3', 'm', '-', 'min', 'minor', 'm6', 'm7', '-7', 'min7', 'min/maj7', 'min(maj7)', 'mM7', 'm/M7' ,'m(M7)', 'm#7', '-M7'
       'min'
@@ -57,7 +57,7 @@ class ChordParser
       ''
     when '6', 'M6', 'maj6', 'm6'
       '6'
-    when '7', 'dom7', 'M7', 'Ma7', 'maj7', 'm7', '-7', 'min7', 'aug7', 'dim7', 'o7', '+7'
+    when '7', 'dom7', 'M7', 'Ma7', 'maj7', 'major7', 'm7', '-7', 'min7', 'aug7', 'dim7', 'o7', '+7'
       '7'
     when 'min/maj7', 'min(maj7)', 'mM7', 'm/M7' ,'m(M7)', 'm#7', '-M7', 'aug/maj7', 'aug(maj7)', '+M7'
       'maj7'

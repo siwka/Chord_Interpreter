@@ -14,7 +14,7 @@ class Scanner
 		# @messenger.puts "chord root: #{chord.root}"
 		# @messenger.puts "chord quality #{chord.quality}"
 		# @messenger.puts "chord add_int #{chord.added}"
-		#@messenger.puts "F# A# C# D#"
+		# @messenger.puts "F# A# C# D#"
 		chord_notation
 	end
 end

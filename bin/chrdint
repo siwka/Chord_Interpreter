@@ -20,7 +20,7 @@ while notation = gets.chomp
 				puts "chord add_int #{chord.added}"
 
 	interpreter = ChordInterpreter.new
-	interpreted_chord = interpreter.interpret(chord)
+	interpreted_chord = ChordInterpreter.interpret(chord)
 
 	#scanner.print( interpreted_chord )
 	puts "notes of the chord are: " + interpreted_chord

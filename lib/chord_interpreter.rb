@@ -93,7 +93,7 @@ class ChordInterpreter
 
 	def self.chord_seven(root, quality, added, interval, chromatic_scale)
 		# so far works for: chord.added == 6 too even though it is not mentioned
-		if %w(7 maj7 dim7).index(added)
+		if %w(7 maj7 dim5).index(added)
 			if %w(aug min).index(quality)
 				chromatic_scale = determine_scale(root, 'dom')
 			elsif quality == 'dim'
@@ -106,7 +106,7 @@ class ChordInterpreter
 	def self.interval_number(chord_added, chord_quality)
 		{
 			'maj7' => MAJ7,
-			'dim7' => MIN7,
+			'dim5' => MIN7,
 			'6' => MAJ6,
 			'7' => 
 			{

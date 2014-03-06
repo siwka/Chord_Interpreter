@@ -294,30 +294,32 @@ describe ChordInterpreter do
 it {
     chord.root = 'C#'
     chord.quality = 'min7'
-    chord.added = 'dim7'  
+    chord.added = 'dim5'  
     described_class.interpret(chord).should eq('C# E G B')
   }
 
 it {
     chord.root = 'E'
     chord.quality = 'min7'
-    chord.added = 'dim7'  
+    chord.added = 'dim5'  
     described_class.interpret(chord).should eq('E G Bb D')
   }
 
 it {
     chord.root = 'Gb'
     chord.quality = 'min7'
-    chord.added = 'dim7'  
+    chord.added = 'dim5'  
     described_class.interpret(chord).should eq('Gb A C E')
   }
 
 it {
     chord.root = 'A'
     chord.quality = 'min7'
-    chord.added = 'dim7'  
+    chord.added = 'dim5'  
     described_class.interpret(chord).should eq('A C Eb G')
   }
+
+#   
 
   
 # Reason to keep expecting results is that in music notation the same note can have 
