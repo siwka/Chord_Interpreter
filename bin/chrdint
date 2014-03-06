@@ -22,6 +22,6 @@ while notation = gets.chomp
 	interpreter = ChordInterpreter.new
 	interpreted_chord = interpreter.interpret(chord)
 
-	#ChordPrinter.print( interpreted_chord )
+	#scanner.print( interpreted_chord )
 	puts "notes of the chord are: " + interpreted_chord
 end
