@@ -7,7 +7,7 @@ require 'scanner'
 
 #next_string = read_input
 scanner = Scanner.new(STDOUT)
-scanner.start("")
+scanner.start #("")
 
 $stdout.flush
 while notation = gets.chomp 

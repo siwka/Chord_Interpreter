@@ -236,6 +236,16 @@ describe ChordParser do
     expect(chord.added).to eq('maj7')
   end
 
+  it 'gets the quality of C aug when Caugmaj7 augumented-major 7th chord' do
+    chord = described_class.parse 'Caugmaj7'
+    expect(chord.quality).to eq('aug')
+  end  
+
+  it 'gets the 7th tone added when Caugmaj7 augumented-major 7th chord' do
+    chord = described_class.parse 'Caugmaj7'
+    expect(chord.added).to eq('maj7')
+  end 
+
 
   it 'gets the quality of C aug when Caug(maj7) augumented-major 7th chord' do
     chord = described_class.parse 'Caug(maj7)'
@@ -284,6 +294,16 @@ describe ChordParser do
 
   it 'gets the 7th tone added when Cmin/maj7 minor/major seventh chord' do
     chord = described_class.parse 'Cmin/maj7'
+    expect(chord.added).to eq('maj7')
+  end
+
+  it 'gets the quality of C minor when Cminmaj7 minor/major seventh chord' do
+    chord = described_class.parse 'Cminmaj7'
+    expect(chord.quality).to eq('min')
+  end  
+
+  it 'gets the 7th tone added when Cminmaj7 minor/major seventh chord' do
+    chord = described_class.parse 'Cminmaj7'
     expect(chord.added).to eq('maj7')
   end  
 
