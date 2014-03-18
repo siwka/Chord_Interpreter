@@ -1,3 +1,13 @@
+class InvalidRootError < StandardError
+end
+
+class InvalidChordError < StandardError
+end
+
+class InvalidToneAddedError < StandardError
+end
+
+
 class ChordParser
 	
   class Chord
@@ -22,7 +32,7 @@ class ChordParser
       end  
       input[0..len]
     else
-      puts "there is no key tone starting with this letter, raise_error(message)"
+      raise InvalidRootError.new "there is no key tone starting with #{input}"
     end
   end
 
@@ -45,7 +55,7 @@ class ChordParser
     when 'min7dim5', '−7b5', 'm7(5)', 'm75'# ks 2 last instead of 'm7(b5)', 'm7b5'
       'min7'
     else
-      puts "wrong quality of input #{input}, raise_error(message)"
+      raise InvalidChordError.new "wrong quality #{input} of chord"
     end
 
   end
@@ -64,7 +74,7 @@ class ChordParser
     when 'dom7dim5', '7b5', 'min7dim5', '−7b5', 'm7(5)', 'm75', '75' #ks three last   instead of  'm7b5', 'm7(b5)'
       'dim5'
     else
-      puts "wrong added tone of input #{input}, raise_error(message)"
+      puts "wrong added tone of input #{input}, raise_error(message)?"
     end
   end
 

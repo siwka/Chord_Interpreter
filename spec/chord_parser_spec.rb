@@ -1,5 +1,7 @@
 require 'chord_parser'
 
+
+
 describe ChordParser do
   it 'parses C' do
     chord = described_class.parse 'C'
@@ -520,7 +522,35 @@ describe ChordParser do
   it 'gets the 7th tone dim5 added when Dbm7(b5) half-diminished seventh' do
     chord = described_class.parse 'Dbm7(b5)'
     expect(chord.added).to eq('dim5')
-  end   
+  end
+
+  it 'raises an exeption when invalid root R' do
+    expect { described_class.parse "R" }.to raise_error(InvalidRootError)
+  end
+
+  it 'raises an exeption when invalid root Z' do
+    expect { described_class.parse "Z" }.to raise_error(InvalidRootError)
+  end
+
+  it 'raises an exeption when invalid root X' do
+    expect { described_class.parse "X" }.to raise_error(InvalidRootError)
+  end
+
+  it 'raises an exeption when invalid quality Cmajj' do
+    expect { described_class.parse "Cmajj" }.to raise_error(InvalidChordError)
+  end
+
+  it 'raises an exeption when invalid quality F#cos' do
+    expect { described_class.parse "F#cos" }.to raise_error(InvalidChordError)
+  end
+
+  it 'raises an exeption when invalid quality Gbcos76' do
+    expect { described_class.parse "Gbcos76" }.to raise_error(InvalidChordError)
+  end
+
+  it 'raises an exeption when tone to chord added Abmaj7dim55' do
+    expect { described_class.parse "Abmaj7dim55" }.to raise_error(InvalidChordError)
+  end      
 
 end
 

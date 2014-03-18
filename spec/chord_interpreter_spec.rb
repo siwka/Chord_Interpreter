@@ -319,6 +319,9 @@ it {
     described_class.interpret(chord).should eq('A C Eb G')
   }
 
+ # extended tertian chords
+ #CM9 
+
 #   
 
   
